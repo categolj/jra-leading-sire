@@ -20,10 +20,14 @@ jobs:
         distribution: 'temurin'
         cache: 'maven'
 
+    - name: Install Playwright dependencies
+      run: |
+        sudo ./mvnw --no-transfer-progress exec:java -e -D exec.mainClass=com.microsoft.playwright.CLI -D exec.args="install-deps"
+
     - name: Run Maven tests
       run: |
         current_date=$(TZ=Asia/Tokyo date '+%Y-%m-%d')
-        ./mvnw test > "${current_date}.json"
+        ./mvnw -q --no-transfer-progress test > "${current_date}.json"
 
     - name: Create report directory
       run: mkdir -p report
