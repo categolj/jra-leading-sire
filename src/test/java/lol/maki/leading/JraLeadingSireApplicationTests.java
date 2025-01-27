@@ -7,6 +7,7 @@ import com.microsoft.playwright.Browser;
 import com.microsoft.playwright.BrowserContext;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.Playwright;
+import java.math.BigDecimal;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -86,19 +87,19 @@ class JraLeadingSireApplicationTests {
 				String[] nameAndYear = horseNameAndYear.split("（|）"); // 「（」と「）」で分割
 				horseData.put("name", nameAndYear[0]); // 種牡馬名
 				if (nameAndYear.length > 1) {
-					horseData.put("birthYear", nameAndYear[1].replace("年", "")); // 生年
+					horseData.put("birthYear", Integer.valueOf(nameAndYear[1].replace("年", ""))); // 生年
 				}
 				horseData.put("color", cols.get(2).text()); // 毛色
 				horseData.put("origin", cols.get(3).text()); // 産地
-				horseData.put("runners", cols.get(4).text()); // 出走頭数
-				horseData.put("winners", cols.get(5).text()); // 勝馬頭数
-				horseData.put("starts", cols.get(6).text()); // 出走回数
-				horseData.put("wins", cols.get(7).text()); // 勝利回数
-				horseData.put("prize", cols.get(8).text().replaceAll("[^0-9]", "")); // 賞金
-				horseData.put("prizePerStart", cols.get(9).text().replaceAll("[^0-9]", "")); // 1出走賞金
-				horseData.put("prizePerHorse", cols.get(10).text().replaceAll("[^0-9]", "")); // 1頭平均賞金
-				horseData.put("winRate", cols.get(11).text()); // 勝馬率
-				horseData.put("earningIndex", cols.get(12).text()); // E・I
+				horseData.put("runners", Integer.valueOf(cols.get(4).text())); // 出走頭数
+				horseData.put("winners", Integer.valueOf(cols.get(5).text())); // 勝馬頭数
+				horseData.put("starts", Integer.valueOf(cols.get(6).text())); // 出走回数
+				horseData.put("wins", Integer.valueOf(cols.get(7).text())); // 勝利回数
+				horseData.put("prize", Long.valueOf(cols.get(8).text().replaceAll("[^0-9]", ""))); // 賞金
+				horseData.put("prizePerStart", Long.valueOf(cols.get(9).text().replaceAll("[^0-9]", ""))); // 1出走賞金
+				horseData.put("prizePerHorse", Long.valueOf(cols.get(10).text().replaceAll("[^0-9]", ""))); // 1頭平均賞金
+				horseData.put("winRate", new BigDecimal(cols.get(11).text())); // 勝馬率
+				horseData.put("earningIndex", new BigDecimal(cols.get(12).text())); // E・I
 				jsonArray.add(horseData);
 			}
 		}
