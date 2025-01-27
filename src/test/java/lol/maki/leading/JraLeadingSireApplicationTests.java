@@ -101,7 +101,7 @@ class JraLeadingSireApplicationTests {
 			Elements cols = row.select("td");
 			if (!cols.isEmpty()) {
 				ObjectNode horseData = mapper.createObjectNode();
-				horseData.put("rank", cols.get(0).text()); // 順位
+				horseData.put("rank", Integer.valueOf(cols.get(0).text())); // 順位
 				String horseNameAndYear = cols.get(1).text();
 				String[] nameAndYear = horseNameAndYear.split("（|）"); // 「（」と「）」で分割
 				horseData.put("name", nameAndYear[0]); // 種牡馬名
