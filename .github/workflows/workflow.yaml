@@ -1,0 +1,49 @@
+name: Scheduled Test Report
+
+on:
+  schedule:
+  - cron: '0 1 * * 2' # Every Tuesday at 10:00 JST (1:00 UTC)
+  workflow_dispatch: # Manually triggered via GitHub UI
+
+jobs:
+  test-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check out repository
+      uses: actions/checkout@v3
+
+    - name: Set up Java
+      uses: actions/setup-java@v3
+      with:
+        java-version: '21'
+        distribution: 'temurin'
+        cache: 'maven'
+
+    - name: Run Maven tests
+      run: |
+        current_date=$(TZ=Asia/Tokyo date '+%Y-%m-%d')
+        ./mvnw test > "${current_date}.json"
+
+    - name: Create report directory
+      run: mkdir -p report
+
+    - name: Move JSON report to report directory
+      run: |
+        current_date=$(TZ=Asia/Tokyo date '+%Y-%m-%d')
+        mv "${current_date}.json" report/
+
+    - name: Configure Git user
+      run: |
+        git config --global user.name "github-actions"
+        git config --global user.email "github-actions@github.com"
+
+    - name: Commit and push report
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        git checkout main
+        git pull origin main
+        git add report/*
+        git commit -m "Add test report for $(TZ=Asia/Tokyo date '+%Y-%m-%d')"
+        git push origin main
