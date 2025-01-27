@@ -27,6 +27,7 @@ jobs:
     - name: Run Maven tests
       run: |
         current_date=$(TZ=Asia/Tokyo date '+%Y-%m-%d')
+        ./mvnw --no-transfer-progress test 
         ./mvnw -q --no-transfer-progress test > "${current_date}.json"
 
     - name: Create report directory
