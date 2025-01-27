@@ -25,18 +25,21 @@ jobs:
       run: |
         sudo ./mvnw --no-transfer-progress exec:java -e -D exec.mainClass=com.microsoft.playwright.CLI -D exec.args="install-deps"
 
-    - name: Run Maven tests
+    - name: Run Maven package
       run: |
         current_date=$(TZ=Asia/Tokyo date '+%Y-%m-%d')
-        ./mvnw --no-transfer-progress test
+        ./mvnw --no-transfer-progress clean package -DskipTests
+
+    - name: Run the scraper
+      run: |
+        java -jar target/jra-leading-sire-0.0.1-SNAPSHOT.jar
 
     - name: Create report directory
       run: mkdir -p report
 
     - name: Move JSON report to report directory
       run: |
-        current_date=$(TZ=Asia/Tokyo date '+%Y-%m-%d')
-        mv "${current_date}.json" report/
+        mv *.json report/
 
     - name: Configure Git user
       run: |
@@ -48,5 +51,5 @@ jobs:
         git checkout main
         git pull origin main
         git add report/*
-        git commit -m "Add report for $(TZ=Asia/Tokyo date '+%Y-%m-%d')"
+        git commit -m "Add report for $(TZ=Asia/Tokyo date '+%Y-%m-%d')" --allow-empty
         git push origin main
