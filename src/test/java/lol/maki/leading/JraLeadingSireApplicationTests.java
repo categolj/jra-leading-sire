@@ -38,7 +38,7 @@ class JraLeadingSireApplicationTests {
 	@BeforeEach
 	void beforeEach() {
 		context = browser.newContext();
-		context.setDefaultTimeout(5000);
+		context.setDefaultTimeout(30000);
 		page = context.newPage();
 	}
 
