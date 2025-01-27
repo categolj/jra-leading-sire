@@ -4,7 +4,8 @@ on:
   schedule:
   - cron: '0 1 * * 2' # Every Tuesday at 10:00 JST (1:00 UTC)
   workflow_dispatch: # Manually triggered via GitHub UI
-
+permissions:
+  contents: write
 jobs:
   test-and-push:
     runs-on: ubuntu-latest
@@ -27,7 +28,6 @@ jobs:
     - name: Run Maven tests
       run: |
         current_date=$(TZ=Asia/Tokyo date '+%Y-%m-%d')
-        ./mvnw --no-transfer-progress test 
         ./mvnw -q --no-transfer-progress test > "${current_date}.json"
 
     - name: Create report directory
@@ -44,11 +44,9 @@ jobs:
         git config --global user.email "github-actions@github.com"
 
     - name: Commit and push report
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         git checkout main
         git pull origin main
         git add report/*
-        git commit -m "Add test report for $(TZ=Asia/Tokyo date '+%Y-%m-%d')"
+        git commit -m "Add report for $(TZ=Asia/Tokyo date '+%Y-%m-%d')"
         git push origin main
