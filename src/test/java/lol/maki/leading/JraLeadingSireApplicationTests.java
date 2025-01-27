@@ -7,7 +7,15 @@ import com.microsoft.playwright.Browser;
 import com.microsoft.playwright.BrowserContext;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.Playwright;
+import java.io.ByteArrayInputStream;
 import java.math.BigDecimal;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
+import java.time.LocalDate;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -57,11 +65,22 @@ class JraLeadingSireApplicationTests {
 	void contextLoads() throws Exception {
 		page.navigate("https://www.jra.go.jp/datafile/leading/");
 		page.locator("a:has-text(\"種牡馬\")").click();
+		Pattern pattern = Pattern.compile("(\\d{4})年(\\d{1,2})月(\\d{1,2})日現在");
+		Matcher matcher = pattern.matcher(page.innerHTML("#leading_horse"));
+		if (!matcher.find()) {
+			System.err.println("Unable to find date");
+			return;
+		}
+		int year = Integer.parseInt(matcher.group(1));
+		int month = Integer.parseInt(matcher.group(2));
+		int day = Integer.parseInt(matcher.group(3));
+		LocalDate date = LocalDate.of(year, month, day);
 		ObjectMapper mapper = new ObjectMapper();
 		ArrayNode jsonArray = mapper.createArrayNode();
 		parsePage(page, jsonArray, mapper);
-		String jsonOutput = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(jsonArray);
-		System.out.println(jsonOutput);
+		String json = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(jsonArray);
+		Files.copy(new ByteArrayInputStream(json.getBytes(StandardCharsets.UTF_8)), Path.of(date + ".json"),
+				StandardCopyOption.REPLACE_EXISTING);
 	}
 
 	void parsePage(Page page, ArrayNode jsonArray, ObjectMapper mapper) throws Exception {
