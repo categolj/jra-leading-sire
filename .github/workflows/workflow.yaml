@@ -2,7 +2,7 @@ name: Scheduled Test Report
 
 on:
   schedule:
-  - cron: '0 2 * * 1,2' # Every Monday and Tuesday at 11:00 JST
+  - cron: '0 3 * * 1,2' # Every Monday and Tuesday at 12:00 JST
   workflow_dispatch: # Manually triggered via GitHub UI
 permissions:
   contents: write
