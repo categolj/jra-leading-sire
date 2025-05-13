@@ -29,30 +29,36 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.boot.ApplicationArguments;
-import org.springframework.boot.ApplicationRunner;
+import org.springframework.batch.core.StepContribution;
+import org.springframework.batch.core.configuration.annotation.StepScope;
+import org.springframework.batch.core.scope.context.ChunkContext;
+import org.springframework.batch.core.step.tasklet.Tasklet;
+import org.springframework.batch.repeat.RepeatStatus;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
 
 @Component
-public class Scraper implements ApplicationRunner {
+@StepScope
+public class JraLeadingSireScrapeTasklet implements Tasklet {
+
+	private final String dir;
 
 	private final ObjectMapper objectMapper;
 
-	private static final Logger log = LoggerFactory.getLogger(Scraper.class);
+	private static final Logger log = LoggerFactory.getLogger(JraLeadingSireScrapeTasklet.class);
 
-	public static final String DIR_OPT = "dir";
-
-	public Scraper(ObjectMapper objectMapper) {
+	public JraLeadingSireScrapeTasklet(@Value("#{jobParameters['dir']?:null}") String dir, ObjectMapper objectMapper) {
+		this.dir = dir;
 		this.objectMapper = objectMapper;
 	}
 
 	@Override
-	public void run(ApplicationArguments args) throws Exception {
+	public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) throws Exception {
 		log.info("Scraper started");
 		ArrayNode jsonArray = this.objectMapper.createArrayNode();
 		AtomicReference<LocalDate> date = new AtomicReference<>();
-		if (args.containsOption(DIR_OPT) && !args.getOptionValues(DIR_OPT).isEmpty()) {
-			String dir = args.getOptionValues(DIR_OPT).getFirst();
+		if (StringUtils.hasText(this.dir)) {
 			log.info("Loading {}", dir);
 			try (Stream<Path> list = Files.list(Path.of(dir))) {
 				Pattern pattern = Pattern.compile("([0-9]+)\\.html$");
@@ -97,12 +103,14 @@ public class Scraper implements ApplicationRunner {
 		}
 		if (date.get() == null) {
 			log.error("Unable to find date");
-			return;
 		}
-		String json = this.objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(jsonArray);
-		log.info("output to {}.json", date.get());
-		Files.copy(new ByteArrayInputStream(json.getBytes(StandardCharsets.UTF_8)), Path.of(date.get() + ".json"),
-				StandardCopyOption.REPLACE_EXISTING);
+		else {
+			String json = this.objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(jsonArray);
+			log.info("output to {}.json", date.get());
+			Files.copy(new ByteArrayInputStream(json.getBytes(StandardCharsets.UTF_8)), Path.of(date.get() + ".json"),
+					StandardCopyOption.REPLACE_EXISTING);
+		}
+		return RepeatStatus.FINISHED;
 	}
 
 	Optional<LocalDate> targetDate(String html) {

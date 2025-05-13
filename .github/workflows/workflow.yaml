@@ -6,6 +6,7 @@ on:
   workflow_dispatch: # Manually triggered via GitHub UI
 permissions:
   contents: write
+  id-token: write
 jobs:
   test-and-push:
     runs-on: ubuntu-latest
@@ -30,9 +31,25 @@ jobs:
         current_date=$(TZ=Asia/Tokyo date '+%Y-%m-%d')
         ./mvnw --no-transfer-progress clean package -DskipTests
 
+    - name: Import Secrets
+      id: import-secrets
+      uses: hashicorp/vault-action@v3.3.0
+      with:
+        exportToken: true
+        exportEnv: true
+        method: jwt
+        url: ${{ secrets.VAULT_ADDR }}
+        role: cicd
+        secrets: |
+          kv/data/cicd/spring_batch_metadata SPRING_DATASOURCE_URL;
+          kv/data/cicd/spring_batch_metadata SPRING_DATASOURCE_USERNAME;
+          kv/data/cicd/spring_batch_metadata SPRING_DATASOURCE_PASSWORD;
+
     - name: Run the scraper
       run: |
-        java -jar target/jra-leading-sire-0.0.1-SNAPSHOT.jar
+        export TZ=Asia/Tokyo
+        today=$(date +%Y-%m-%d)
+        java -Duser.timezone=Asia/Tokyo -Duser.country=JP -Duser.language=ja -Dfile.encoding=UTF-8 -jar target/jra-leading-sire-0.0.1-SNAPSHOT.jar --spring.datasource.driver-class-name=org.postgresql.Driver runDate=$today,java.time.LocalDate
 
     - name: Create report directory
       run: mkdir -p report
