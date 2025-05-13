@@ -48,8 +48,7 @@ jobs:
     - name: Run the scraper
       run: |
         export TZ=Asia/Tokyo
-        today=$(date +%Y-%m-%d)
-        java -Duser.timezone=Asia/Tokyo -Duser.country=JP -Duser.language=ja -Dfile.encoding=UTF-8 -jar target/jra-leading-sire-0.0.1-SNAPSHOT.jar --spring.datasource.driver-class-name=org.postgresql.Driver runDate=$today,java.time.LocalDate
+        java -Duser.timezone=Asia/Tokyo -Duser.country=JP -Duser.language=ja -Dfile.encoding=UTF-8 -jar target/jra-leading-sire-0.0.1-SNAPSHOT.jar --spring.datasource.driver-class-name=org.postgresql.Driver
 
     - name: Create report directory
       run: mkdir -p report
