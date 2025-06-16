@@ -20,9 +20,16 @@ public class JobConfig {
 	}
 
 	@Bean
-	public Job scrapeJob(JobRepository jobRepository, Step scrapeStep) {
+	public Step scrape2SaiStep(JobRepository jobRepository, PlatformTransactionManager transactionManager,
+			JraLeading2SaiSireScrapeTasklet tasklet) {
+		return new StepBuilder("Scrape2Sai", jobRepository).tasklet(tasklet, transactionManager).build();
+	}
+
+	@Bean
+	public Job scrapeJob(JobRepository jobRepository, Step scrapeStep, Step scrape2SaiStep) {
 		return new JobBuilder("JraLeadingSireScrape", jobRepository).incrementer(new RunIdIncrementer())
 			.start(scrapeStep)
+			.next(scrape2SaiStep)
 			.build();
 	}
 

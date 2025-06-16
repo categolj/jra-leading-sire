@@ -51,10 +51,13 @@ jobs:
         java -Duser.timezone=Asia/Tokyo -Duser.country=JP -Duser.language=ja -Dfile.encoding=UTF-8 -jar target/jra-leading-sire-0.0.1-SNAPSHOT.jar --spring.datasource.driver-class-name=org.postgresql.Driver
 
     - name: Create report directory
-      run: mkdir -p report
+      run: |
+        mkdir -p report
+        mkdir -p report_2sai
 
     - name: Move JSON report to report directory
       run: |
+        for f in *_2sai.json; do mv "$f" "report_2sai/${f%_2sai.json}.json"; done
         mv *.json report/
 
     - name: Configure Git user
@@ -67,5 +70,6 @@ jobs:
         git checkout main
         git pull origin main
         git add report/*
+        git add report_2sai/*
         git commit -m "Add report for $(TZ=Asia/Tokyo date '+%Y-%m-%d')" --allow-empty
         git push origin main
