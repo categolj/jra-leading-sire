@@ -158,18 +158,22 @@ public abstract class AbstractJraLeadingSireScrapeTasklet implements Tasklet {
 				}
 				horseData.put("color", cols.get(2).text());
 				horseData.put("origin", cols.get(3).text());
-				horseData.put("runners", Integer.valueOf(cols.get(4).text()));
-				horseData.put("winners", Integer.valueOf(cols.get(5).text()));
-				horseData.put("starts", Integer.valueOf(cols.get(6).text()));
-				horseData.put("wins", Integer.valueOf(cols.get(7).text()));
-				horseData.put("prize", Long.valueOf(cols.get(8).text().replaceAll("[^0-9]", "")));
-				horseData.put("prizePerStart", Long.valueOf(cols.get(9).text().replaceAll("[^0-9]", "")));
-				horseData.put("prizePerHorse", Long.valueOf(cols.get(10).text().replaceAll("[^0-9]", "")));
+				horseData.put("runners", parseLong(cols.get(4).text()));
+				horseData.put("winners", parseLong(cols.get(5).text()));
+				horseData.put("starts", parseLong(cols.get(6).text()));
+				horseData.put("wins", parseLong(cols.get(7).text()));
+				horseData.put("prize", parseLong(cols.get(8).text()));
+				horseData.put("prizePerStart", parseLong(cols.get(9).text()));
+				horseData.put("prizePerHorse", parseLong(cols.get(10).text()));
 				horseData.put("winRate", new BigDecimal(cols.get(11).text()));
 				horseData.put("earningIndex", new BigDecimal(cols.get(12).text()));
 				jsonArray.add(horseData);
 			}
 		}
+	}
+
+	static long parseLong(String text) {
+		return Long.parseLong(text.replaceAll("[^0-9]", ""));
 	}
 
 }
