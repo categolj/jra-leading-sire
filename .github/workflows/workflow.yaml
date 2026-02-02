@@ -55,10 +55,10 @@ jobs:
         mkdir -p report
         mkdir -p report_2sai
 
-    - name: Move JSON report to report directory
-      run: |
-        for f in *_2sai.json; do mv "$f" "report_2sai/${f%_2sai.json}.json"; done
-        mv *.json report/
+    #- name: Move JSON report to report directory
+    #  run: |
+    #    for f in *_2sai.json; do mv "$f" "report_2sai/${f%_2sai.json}.json"; done
+    #    mv *.json report/
 
     - name: Configure Git user
       run: |
