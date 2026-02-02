@@ -70,6 +70,6 @@ jobs:
         git checkout main
         git pull origin main
         git add report/*
-        git add report_2sai/*
+        # git add report_2sai/*
         git commit -m "Add report for $(TZ=Asia/Tokyo date '+%Y-%m-%d')" --allow-empty
         git push origin main
