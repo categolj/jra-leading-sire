@@ -26,7 +26,7 @@ public class JobConfig {
 	public Job scrapeJob(JobRepository jobRepository, Step scrapeStep, Step scrape2SaiStep) {
 		return new JobBuilder("JraLeadingSireScrape", jobRepository).incrementer(new RunIdIncrementer())
 			.start(scrapeStep)
-			.next(scrape2SaiStep)
+			// .next(scrape2SaiStep)
 			.build();
 	}
 
