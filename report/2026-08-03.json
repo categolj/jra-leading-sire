@@ -3600,6 +3600,66 @@
   "earningIndex" : 0.37
 }, {
   "rank" : 241,
+  "name" : "Dabirsim",
+  "birthYear" : 2009,
+  "color" : "鹿毛",
+  "origin" : "",
+  "runners" : 1,
+  "winners" : 1,
+  "starts" : 4,
+  "wins" : 1,
+  "prize" : 7400000,
+  "prizePerStart" : 1850000,
+  "prizePerHorse" : 7400000,
+  "winRate" : 1.000,
+  "earningIndex" : 1.40
+}, {
+  "rank" : 242,
+  "name" : "エポカドーロ",
+  "birthYear" : 2015,
+  "color" : "黒鹿毛",
+  "origin" : "新ひだか町",
+  "runners" : 14,
+  "winners" : 0,
+  "starts" : 42,
+  "wins" : 0,
+  "prize" : 7200000,
+  "prizePerStart" : 171429,
+  "prizePerHorse" : 514286,
+  "winRate" : 0.000,
+  "earningIndex" : 0.10
+}, {
+  "rank" : 243,
+  "name" : "Curlin",
+  "birthYear" : 2004,
+  "color" : "",
+  "origin" : "米",
+  "runners" : 3,
+  "winners" : 0,
+  "starts" : 9,
+  "wins" : 0,
+  "prize" : 6900000,
+  "prizePerStart" : 766667,
+  "prizePerHorse" : 2300000,
+  "winRate" : 0.000,
+  "earningIndex" : 0.44
+}, {
+  "rank" : 244,
+  "name" : "アルバート",
+  "birthYear" : 2011,
+  "color" : "栗毛",
+  "origin" : "安平町",
+  "runners" : 7,
+  "winners" : 0,
+  "starts" : 22,
+  "wins" : 0,
+  "prize" : 6730000,
+  "prizePerStart" : 305909,
+  "prizePerHorse" : 961429,
+  "winRate" : 0.000,
+  "earningIndex" : 0.18
+}, {
+  "rank" : 245,
   "name" : "Mitole",
   "birthYear" : 2015,
   "color" : "",
@@ -3612,9 +3672,9 @@
   "prizePerStart" : 1320000,
   "prizePerHorse" : 6600000,
   "winRate" : 0.000,
-  "earningIndex" : 1.27
+  "earningIndex" : 1.25
 }, {
-  "rank" : 242,
+  "rank" : 246,
   "name" : "I Am Invincible",
   "birthYear" : 2004,
   "color" : "",
@@ -3627,9 +3687,9 @@
   "prizePerStart" : 6500000,
   "prizePerHorse" : 6500000,
   "winRate" : 1.000,
-  "earningIndex" : 1.25
+  "earningIndex" : 1.23
 }, {
-  "rank" : 242,
+  "rank" : 246,
   "name" : "Improbable",
   "birthYear" : 2016,
   "color" : "",
@@ -3642,9 +3702,9 @@
   "prizePerStart" : 2166667,
   "prizePerHorse" : 6500000,
   "winRate" : 1.000,
-  "earningIndex" : 1.25
+  "earningIndex" : 1.23
 }, {
-  "rank" : 242,
+  "rank" : 246,
   "name" : "クロフネ",
   "birthYear" : 1998,
   "color" : "芦毛",
@@ -3657,24 +3717,24 @@
   "prizePerStart" : 3250000,
   "prizePerHorse" : 6500000,
   "winRate" : 0.000,
-  "earningIndex" : 1.25
+  "earningIndex" : 1.23
 }, {
-  "rank" : 245,
+  "rank" : 249,
   "name" : "Zoustar",
   "birthYear" : 2010,
   "color" : "",
   "origin" : "",
   "runners" : 3,
   "winners" : 0,
-  "starts" : 9,
+  "starts" : 10,
   "wins" : 0,
   "prize" : 6404000,
-  "prizePerStart" : 711556,
+  "prizePerStart" : 640400,
   "prizePerHorse" : 2134667,
   "winRate" : 0.000,
-  "earningIndex" : 0.41
+  "earningIndex" : 0.40
 }, {
-  "rank" : 246,
+  "rank" : 250,
   "name" : "Not This Time",
   "birthYear" : 2014,
   "color" : "",
@@ -3687,24 +3747,24 @@
   "prizePerStart" : 800000,
   "prizePerHorse" : 1600000,
   "winRate" : 0.000,
-  "earningIndex" : 0.31
+  "earningIndex" : 0.30
 }, {
-  "rank" : 247,
-  "name" : "キャプテンキング",
-  "birthYear" : 2014,
-  "color" : "鹿毛",
-  "origin" : "新ひだか町",
-  "runners" : 1,
+  "rank" : 251,
+  "name" : "ヤングマンパワー",
+  "birthYear" : 2012,
+  "color" : "黒鹿毛",
+  "origin" : "安平町",
+  "runners" : 4,
   "winners" : 0,
-  "starts" : 6,
+  "starts" : 12,
   "wins" : 0,
-  "prize" : 6200000,
-  "prizePerStart" : 1033333,
-  "prizePerHorse" : 6200000,
+  "prize" : 6380000,
+  "prizePerStart" : 531667,
+  "prizePerHorse" : 1595000,
   "winRate" : 0.000,
-  "earningIndex" : 1.19
+  "earningIndex" : 0.30
 }, {
-  "rank" : 248,
+  "rank" : 252,
   "name" : "ザファクター",
   "birthYear" : 2008,
   "color" : "芦毛",
@@ -3719,7 +3779,7 @@
   "winRate" : 0.000,
   "earningIndex" : 0.23
 }, {
-  "rank" : 249,
+  "rank" : 253,
   "name" : "Farhh",
   "birthYear" : 2008,
   "color" : "",
@@ -3732,9 +3792,9 @@
   "prizePerStart" : 1966667,
   "prizePerHorse" : 5900000,
   "winRate" : 0.000,
-  "earningIndex" : 1.14
+  "earningIndex" : 1.12
 }, {
-  "rank" : 249,
+  "rank" : 253,
   "name" : "エタリオウ",
   "birthYear" : 2015,
   "color" : "青鹿毛",
@@ -3747,9 +3807,9 @@
   "prizePerStart" : 1966667,
   "prizePerHorse" : 2950000,
   "winRate" : 0.500,
-  "earningIndex" : 0.57
+  "earningIndex" : 0.56
 }, {
-  "rank" : 249,
+  "rank" : 253,
   "name" : "タイセイレジェンド",
   "birthYear" : 2007,
   "color" : "栗毛",
@@ -3764,7 +3824,7 @@
   "winRate" : 0.167,
   "earningIndex" : 0.19
 }, {
-  "rank" : 252,
+  "rank" : 256,
   "name" : "アドミラブル",
   "birthYear" : 2014,
   "color" : "鹿毛",
@@ -3779,7 +3839,7 @@
   "winRate" : 0.000,
   "earningIndex" : 0.18
 }, {
-  "rank" : 253,
+  "rank" : 257,
   "name" : "Bolt d'Oro",
   "birthYear" : 2015,
   "color" : "",
@@ -3792,24 +3852,39 @@
   "prizePerStart" : 509091,
   "prizePerHorse" : 1120000,
   "winRate" : 0.000,
-  "earningIndex" : 0.22
+  "earningIndex" : 0.21
 }, {
-  "rank" : 254,
+  "rank" : 258,
   "name" : "スノードラゴン",
   "birthYear" : 2008,
   "color" : "芦毛",
   "origin" : "新冠町",
   "runners" : 4,
   "winners" : 0,
-  "starts" : 9,
+  "starts" : 10,
   "wins" : 0,
   "prize" : 5500000,
-  "prizePerStart" : 611111,
+  "prizePerStart" : 550000,
   "prizePerHorse" : 1375000,
   "winRate" : 0.000,
   "earningIndex" : 0.26
 }, {
-  "rank" : 255,
+  "rank" : 259,
+  "name" : "ドリームバレンチノ",
+  "birthYear" : 2007,
+  "color" : "青毛",
+  "origin" : "新冠町",
+  "runners" : 5,
+  "winners" : 0,
+  "starts" : 10,
+  "wins" : 0,
+  "prize" : 5170000,
+  "prizePerStart" : 517000,
+  "prizePerHorse" : 1034000,
+  "winRate" : 0.000,
+  "earningIndex" : 0.20
+}, {
+  "rank" : 260,
   "name" : "Preservationist",
   "birthYear" : 2013,
   "color" : "鹿毛",
@@ -3822,82 +3897,7 @@
   "prizePerStart" : 1200000,
   "prizePerHorse" : 4800000,
   "winRate" : 0.000,
-  "earningIndex" : 0.92
-}, {
-  "rank" : 255,
-  "name" : "グランプリボス",
-  "birthYear" : 2008,
-  "color" : "鹿毛",
-  "origin" : "安平町",
-  "runners" : 5,
-  "winners" : 0,
-  "starts" : 14,
-  "wins" : 0,
-  "prize" : 4800000,
-  "prizePerStart" : 342857,
-  "prizePerHorse" : 960000,
-  "winRate" : 0.000,
-  "earningIndex" : 0.18
-}, {
-  "rank" : 255,
-  "name" : "ヤングマンパワー",
-  "birthYear" : 2012,
-  "color" : "黒鹿毛",
-  "origin" : "安平町",
-  "runners" : 4,
-  "winners" : 0,
-  "starts" : 10,
-  "wins" : 0,
-  "prize" : 4800000,
-  "prizePerStart" : 480000,
-  "prizePerHorse" : 1200000,
-  "winRate" : 0.000,
-  "earningIndex" : 0.23
-}, {
-  "rank" : 258,
-  "name" : "Lucky Vega",
-  "birthYear" : 2018,
-  "color" : "鹿毛",
-  "origin" : "",
-  "runners" : 3,
-  "winners" : 0,
-  "starts" : 11,
-  "wins" : 0,
-  "prize" : 4780000,
-  "prizePerStart" : 434545,
-  "prizePerHorse" : 1593333,
-  "winRate" : 0.000,
-  "earningIndex" : 0.31
-}, {
-  "rank" : 259,
-  "name" : "エピカリス",
-  "birthYear" : 2014,
-  "color" : "黒鹿毛",
-  "origin" : "浦河町",
-  "runners" : 5,
-  "winners" : 0,
-  "starts" : 14,
-  "wins" : 0,
-  "prize" : 4770000,
-  "prizePerStart" : 340714,
-  "prizePerHorse" : 954000,
-  "winRate" : 0.000,
-  "earningIndex" : 0.18
-}, {
-  "rank" : 260,
-  "name" : "Catholic Boy",
-  "birthYear" : 2015,
-  "color" : "",
-  "origin" : "",
-  "runners" : 2,
-  "winners" : 0,
-  "starts" : 9,
-  "wins" : 0,
-  "prize" : 4700000,
-  "prizePerStart" : 522222,
-  "prizePerHorse" : 2350000,
-  "winRate" : 0.000,
-  "earningIndex" : 0.45
+  "earningIndex" : 0.91
 }, {
   "rank" : 260,
   "name" : "グランプリボス",
